@@ -1,9 +1,11 @@
 #include <iostream>
 #include <fstream>
 #include <chrono>
+#include <vector>
 
 using namespace std;
 using namespace chrono;
+
 
 ifstream fin("date.in");
 
@@ -13,42 +15,48 @@ int maxim(int v[], int n)
     for (int i = 1; i < n; i++)
         if (v[i] > maxi)
             maxi = v[i];
+            
     return maxi;
 }
 
 void sortcifre(int v[], int n, int exp)
 {
-    int v2[n], fr[10] = { 0 };
+    vector<int> v2(n);
+    int fr[10] = {0};
 
     for (int i = 0; i < n; i++)
-        fr[(v[i] / exp) % 10]++;//calculam frecvente fiecarei cifre
+        fr[(v[i] / exp) % 10]++;
 
-    for (int i = 1; i <= 10; i++)
-        fr[i] = fr[i] + fr[i - 1];//calculam pozițiile finale ale fiecărei cifre
+    for (int i = 1; i < 10; i++)
+        fr[i] = fr[i] + fr[i - 1];
 
     for (int i = n - 1; i >= 0; i--)
     {
         v2[fr[(v[i] / exp) % 10] - 1] = v[i];
-        fr[(v[i] / exp) % 10]--;//punem elementele în vectorul nou în ordinea corectă
+        fr[(v[i] / exp) % 10]--;
     }
 
     for (int i = 0; i < n; i++)
         v[i] = v2[i];
-
 }
+
 
 void radixSort(int v[], int n)
 {
     int maxi = maxim(v, n);
+    
     for (int exp = 1; maxi / exp > 0; exp = exp * 10)
         sortcifre(v, n, exp);
 }
-void merge(int v[], int stg, int mij, int dr) {
+
+void merge(int v[], int stg, int mij, int dr)
+{
     int n1 = mij - stg + 1;
     int n2 = dr - mij;
 
     //Crearea subvectorilor temporari pt stanga si dreapta
-    int vs[n1], vd[n2];
+    int *vs = new int[n1];
+    int *vd = new int[n2];
 
     //Copiem datele în subvectorii temporari
     for (int i = 0; i < n1; i++)
@@ -74,14 +82,6 @@ void merge(int v[], int stg, int mij, int dr) {
             v[k] = vd[j];
             j++;
         }
-        k++;
-    }
-
-    // Copierea elementelor rămase din vs (dacă există)
-    while (i < n1)
-    {
-        v[k] = vs[i];
-        i++;
         k++;
     }
 
@@ -219,6 +219,7 @@ int main()
     int n;
     fin >> n;
     int v[n], v1[n], v2[n], v3[n], v4[n], v5[n];
+    
     for (int i = 0; i < n; i++)
     {
         fin >> v[i];
@@ -293,6 +294,6 @@ int main()
 
 
     cout << endl;
-
-
+    
+    return 0;
 }
