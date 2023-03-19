@@ -6,7 +6,6 @@
 using namespace std;
 using namespace chrono;
 
-
 ifstream fin("date.in");
 
 int maxim(int v[], int n)
@@ -70,6 +69,7 @@ void merge(int v[], int stg, int mij, int dr)
 
     //Interclasarea subvectorilor temporari înapoi în vectorul principal
     int i = 0, j = 0, k = stg;
+    
     while (i < n1 && j < n2)
     {
         if (vs[i] <= vd[j])
@@ -103,6 +103,7 @@ void mergeSort(int v[], int stg, int dr)
         return;
     }
 
+    
     int mij = stg + (dr - stg) / 2;
     mergeSort(v, stg, mij);   // Sortarea primei jumătăți a vectorului
     mergeSort(v, mij + 1, dr);  // Sortarea celei de-a doua jumătăți a vectorului
