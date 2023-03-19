@@ -14,9 +14,9 @@ int maxim(int v[], int n)
     for (int i = 1; i < n; i++)
         if (v[i] > maxi)
             maxi = v[i];
-    
     return maxi;
 }
+
 
 void sortcifre(int v[], int n, int exp)
 {
@@ -121,6 +121,7 @@ void shellSort(int v[], int n)
     }
 }
 
+
 int partition(int arr[], int start, int end)
 {
 
@@ -212,15 +213,11 @@ bool test_sort(int v[], int n)
     return true;
 }
 
-
-
 int main()
 {
     int n;
     fin >> n;
-    
     int v[n], v1[n], v2[n], v3[n], v4[n], v5[n];
-    
     for (int i = 0; i < n; i++)
     {
         fin >> v[i];
@@ -258,6 +255,7 @@ int main()
     cout << "Durata de executie a functiei este: " << duration2.count() << " nanosecunde." << endl;
 
 
+    
     //shellSort(v3,n);
     cout << endl << "ShellSort ";
     /*for (int i=0; i<n; i++)
@@ -270,6 +268,7 @@ int main()
     cout << "Durata de executie a functiei este: " << duration3.count() << " nanosecunde." << endl;
 
 
+    
     //bubbleSort(v4,n);
     cout << endl << "QuickSort ";
     /*for (int i=0; i<n; i++)
@@ -282,6 +281,7 @@ int main()
     cout << "Durata de executie a functiei este: " << duration4.count() << " nanosecunde." << endl;
 
 
+    
     //countSort(v5,n);
     cout << endl << "CountSort ";
     /*for (int i=0; i<n; i++)
@@ -293,8 +293,8 @@ int main()
     auto duration5 = duration_cast<nanoseconds>(stop5 - start5); // calcularea duratei in microsecunde
     cout << "Durata de executie a functiei este: " << duration5.count() << " nanosecunde." << endl;
 
-
+    
+    
     cout << endl;
     
-    return 0;
 }
