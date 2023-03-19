@@ -14,14 +14,14 @@ int maxim(int v[], int n)
     for (int i = 1; i < n; i++)
         if (v[i] > maxi)
             maxi = v[i];
-            
+    
     return maxi;
 }
 
 void sortcifre(int v[], int n, int exp)
 {
     vector<int> v2(n);
-    int fr[10] = {0};
+    int fr[10] = { 0 };
 
     for (int i = 0; i < n; i++)
         fr[(v[i] / exp) % 10]++;
@@ -43,13 +43,11 @@ void sortcifre(int v[], int n, int exp)
 void radixSort(int v[], int n)
 {
     int maxi = maxim(v, n);
-    
     for (int exp = 1; maxi / exp > 0; exp = exp * 10)
         sortcifre(v, n, exp);
 }
 
-void merge(int v[], int stg, int mij, int dr)
-{
+void merge(int v[], int stg, int mij, int dr) {
     int n1 = mij - stg + 1;
     int n2 = dr - mij;
 
@@ -69,7 +67,6 @@ void merge(int v[], int stg, int mij, int dr)
 
     //Interclasarea subvectorilor temporari înapoi în vectorul principal
     int i = 0, j = 0, k = stg;
-    
     while (i < n1 && j < n2)
     {
         if (vs[i] <= vd[j])
@@ -103,7 +100,6 @@ void mergeSort(int v[], int stg, int dr)
         return;
     }
 
-    
     int mij = stg + (dr - stg) / 2;
     mergeSort(v, stg, mij);   // Sortarea primei jumătăți a vectorului
     mergeSort(v, mij + 1, dr);  // Sortarea celei de-a doua jumătăți a vectorului
@@ -205,6 +201,7 @@ void countSort(int v[], int n)
 
 }
 
+
 bool test_sort(int v[], int n)
 {
     if (n == 0 || n == 1)
@@ -215,10 +212,13 @@ bool test_sort(int v[], int n)
     return true;
 }
 
+
+
 int main()
 {
     int n;
     fin >> n;
+    
     int v[n], v1[n], v2[n], v3[n], v4[n], v5[n];
     
     for (int i = 0; i < n; i++)
